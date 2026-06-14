@@ -1,0 +1,668 @@
+section {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  background-color: #F3F3F3;
+}
+
+@font-face {
+  font-family: 'Citadel';
+  src: url("assets/fonts/Citadel.otf");
+}
+
+@font-face {
+  font-family: 'Gyahegi';
+  src: url("assets/fonts/Gyahegi.otf");
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url("assets/fonts/InstrumentSerif-Regular.ttf");
+}
+
+/* ------------------------------
+            PHONE
+------------------------------ */
+
+@media only screen and (max-width: 850px) {
+  body {
+    font-size: 0.5em;
+  }
+
+  .title {
+    font-size: 5vw;
+    margin-top: 30vw;
+  }
+
+  .description {
+    font-size: 5vw;
+    width: 15em;
+  }
+
+  .calculator {
+    scale: 130%;
+  }
+
+  .calculator-button {
+    margin-left: 43.5vw;
+    margin-top: -18vw;
+  }
+
+  .calculator-button img {
+    width: 9.8vw;
+  }
+
+  .grade-calculator {
+    margin-top: -15em;
+    width: 100%;
+  }
+
+  .grade-calculator-container {
+    width: 90%;
+    padding: 1em;
+  }
+
+  select::picker-icon {
+    scale: 80%;
+  }
+
+  #grades {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .option-container {
+    margin-top: -1.35em;
+  }
+
+  select {
+    padding: 1em;
+    white-space: nowrap;
+  }
+
+  .option-container input {
+    width: 20%;
+    margin-left: 0.5em;
+    font-size: 1.5em;
+  }
+
+  .option-container h1 {
+    text-align: center;
+    margin-top: 0.3em;
+    margin-left: 0.25em;
+    color: #4F4F4F;
+    font-family: "Instrument Serif";
+  }
+
+  .grade-output p {
+    margin-top: 1.2em;
+  }
+
+  .gwa-table {
+    gap: 5px;
+    padding-left: 2em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+
+  .term-title {
+    grid-column: span 6; 
+    display: grid;
+    grid-template-columns: subgrid; 
+    align-items: end;
+    margin-bottom: 5px;
+  }
+
+  .term-title h1 {
+    font-size: 0.8em;
+  }
+
+  .subject-container input {
+    padding-left: 0.7em;
+  }
+}
+
+/* ------------------------------
+          COMPUTER
+------------------------------ */
+
+@media only screen and (min-width: 850px) {
+  .title {
+    font-size: 4em;
+  }
+
+  .description {
+    font-size: 2em;
+    width: 15em;
+  }
+
+  .calculator {
+    margin-top: -20em;
+  }
+
+  .calculator-button {
+    margin-left: 23.85em;
+    margin-top: -9.9em;
+  }
+
+  .calculator-button img {
+    width: 5.2em;
+  }
+
+  .grade-calculator {
+    width: 100%;
+    margin-top: -23%;
+  }
+
+  .grade-calculator-container {
+    width: 50%;
+    padding: 1em;
+  }
+
+  #grades {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em; 
+  }
+
+  select {
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 2em;
+    padding: 1em;
+    width: 30%;
+    font-family: 'Gyahegi', serif;
+    color:#4F4F4F;
+  }
+
+  .option-container input {
+    width: 25%;
+    font-size: 1.5em;
+    margin-left: 2em;
+  }
+
+  .grade-output p {
+    margin-top: 0.65em;
+  }
+
+  .option-container h1 {
+    margin-left: 1.2em;
+  }
+
+  .gwa-table {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .term-title h1 {
+    font-size: 0.9em;
+  }
+
+  .term-title h1:first-child {
+    grid-column: 2;
+  }
+
+  .subject-container input.subject{
+    width: 30%;
+  }
+
+  .subject-container input {
+    padding-left: 1em;
+  }
+}
+
+/* ------------------------------
+              HOME
+------------------------------ */
+
+.title {
+  text-align: center;
+  color: #999B84;
+  font-family: 'Gyahegi', serif;
+}
+
+.title label {
+  font-size: 2em;
+  font-family: 'Citadel', cursive;
+}
+
+.description {
+  padding: 0.2em;
+  color: #4F4F4F;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  font-family: 'Instrument Serif', serif;
+}
+
+.calculator-container {
+  width: 100%;
+}
+
+.calculator {
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.calculator-img {
+  overflow: hidden;
+  width: 50em;
+  display: block;
+}
+
+.home-text {
+  width: 100%;
+  text-align: center;
+  height: 50em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-button {
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.calculator-button button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.calculator-button img {
+  transition: 0.2s ease-out;
+}
+
+.calculator-button img:hover {
+  scale: 105%;
+  filter: drop-shadow(0px 0px 15px #e7d8b9) brightness(1.2);
+  cursor: pointer;
+}
+
+/* ------------------------------
+          GRADE CALC
+------------------------------ */
+
+.grade-calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+.grade-calculator-container {
+  background-color: #FFFFFF;
+  border: 1px solid black;
+  border-radius: 1em;
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+  border: none;
+  background: none;
+}
+
+.method-selector select {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 1em;
+  text-align: center;
+  font-family: 'Gyahegi', serif;
+  color:#4F4F4F;
+  filter: drop-shadow(0px 0px 10px #00000041);
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+optgroup {
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background: #eeeeee;
+  margin-top: 5px;
+}
+
+option {
+  background: #eeeeee;
+  padding: 10px;
+  transition: 0.3s background;
+  color:#4F4F4F;
+  top: 100%;
+  left: 0;
+}
+
+option:nth-of-type(odd) {
+  background: white;
+}
+
+option:hover {
+  background: #999B84;
+  color: white;
+}
+
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+::picker(select) {
+  opacity: 0;
+  transition: all 0.2s allow-discrete;
+}
+
+:open::picker(select) {
+  opacity: 1;
+}
+
+@starting-style {
+  :open::picker(select) {
+    opacity: 0;
+  }
+}
+
+select::picker-icon {
+  content: url("assets/img/arrow.svg");
+  color: #999999;
+  transition: 0.4s rotate;
+  margin-top: -0.3em;
+  margin-left: auto;
+}
+
+select:open::picker-icon {
+  rotate: 180deg;
+}
+
+#grades {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em;
+  padding-right: 2em; 
+}
+
+.option-container {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 2em;
+  padding: 1em;
+  font-family: 'Gyahegi', serif;
+  color:#4F4F4F;
+}
+
+.option-container input {
+  height: 2.5em;
+  text-align: left;
+  padding-left: 1em;
+  font-family: 'Instrument Serif';
+  color:#4F4F4F;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: #F3F3F3;
+  transition: 0.2s ease-out;
+}
+
+.option-container input:hover,
+.subject-container input:hover,
+.overall-subject-container input:hover
+{
+  background-color: #dadada;
+}
+
+.option-container input:focus,
+.subject-container input:focus,
+.overall-subject-container input:focus 
+{
+  outline: none;
+  filter: drop-shadow(0px 0px 10px #00000041);
+}
+
+.option-containerinput::-webkit-outer-spin-button,
+.option-container input::-webkit-inner-spin-button, 
+.subject-container input::-webkit-outer-spin-button,
+.subject-container input::-webkit-inner-spin-button,
+.overall-subject-container input::-webkit-inner-spin-button,
+.overall-subject-container input::-webkit-inner-spin-button
+ {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.option-container h1 {
+  text-align: center;
+  color: #4F4F4F;
+  font-family: "Instrument Serif";
+}
+
+/* ------------------------------
+        PER SUB CALCULATOR
+------------------------------ */
+
+.gwa-table {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 45px;
+  max-width: 100em;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: -1em;
+}
+
+.term-title {
+  grid-column: span 6; 
+  display: grid;
+  grid-template-columns: subgrid; 
+  align-items: end;
+  margin-bottom: 5px;
+}
+
+.term-title h1 {
+  font-family: "Gyahegi", cursive;
+  color:#4F4F4F;
+  margin: 0;
+  text-align: center;
+}
+
+.term-title h1:first-child {
+  grid-column: 2;
+}
+
+.subject-container input.subject{
+  background-color: rgb(255, 255, 255);
+  border-radius: 20em;
+}
+
+.subject-container {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  padding-bottom: 0.4em;
+}
+
+.subject-container input {
+  width: 100% !important;
+  box-sizing: border-box;
+  min-width: 0; 
+  height: 2.5em;
+  text-align: left;
+  font-family: 'Instrument Serif';
+  font-size: 1.5em;
+  color:#4F4F4F;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: #F3F3F3;
+  transition: 0.2s ease-out;
+}
+
+/* ------------------------------
+            GWA CALC
+------------------------------ */
+
+.overall-subject-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.overall-subject-container input{
+  width: 30%;
+  box-sizing: border-box;
+  min-width: 0; 
+  height: 2.5em;
+  text-align: left;
+  padding-left: 1em;  
+  font-family: 'Instrument Serif';
+  font-size: 1.5em;
+  color:#4F4F4F;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: #F3F3F3;
+  transition: 0.2s ease-out;
+}
+
+.overall-subject-container input.subject{
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  border-radius: 20em;
+  margin-right: 1em;
+}
+
+/* ------------------------------
+            FOOTER
+------------------------------ */
+
+.delete{
+  width: 3.5em;
+  height: 3.5em;
+  border: 1px solid black;
+  background: #F3F3F3;
+  border-radius: 20em;
+  margin-left: 1em;
+  transition: 0.2s ease-out;
+}
+
+.delete:hover {
+  background-color: #999B84;
+  color: white;
+  filter: brightness(1.2);
+}
+
+.delete img {
+  width: 100%;
+}
+
+.add-button {
+  background-color: #F3F3F3;
+  color:#4F4F4F;
+  font-family: 'Gyahegi', serif;
+  border: 1px solid black;
+  border-radius: 20em;
+  padding: 0.5em;
+  width: 10em;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.add-button:hover, .calculate:hover, .clear:hover {
+  background-color: #999B84;
+  color: white;
+  filter: brightness(1.2);
+}
+
+.grade-output {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 4em;
+  font-size: 1.5em;
+  font-family: "Instrument Serif";
+  color:#4F4F4F;
+}
+
+#equivalent {
+  border-radius: 2em;
+  width: 10em;
+}
+
+.excellent {
+    background-color: #d4edda;
+}
+
+.very-good {
+    background-color: #e2f0d9;
+}
+
+.satisfactory {
+    background-color: #fff3cd;
+}
+
+.fair {
+    background-color: #fff0e6;
+}
+
+.failed {
+    background-color: #f8d7da;
+}
+
+#gwa .delete{
+  margin-left: -0.1em;
+}
+
+.calculate-clear {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
+}
+
+.calculate, .clear {
+  background-color: #ffffff;
+  color:#4F4F4F;
+  font-family: 'Gyahegi', serif;
+  border: 1px solid black;
+  border-radius: 20em;
+  padding: 0.5em;
+  width: 10em;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.footer-text {
+  font-family: 'Gyahegi', serif;
+  color: #4F4F4F;
+  text-align: center;
+  padding: 2em;
+  font-size: 0.7em;
+}

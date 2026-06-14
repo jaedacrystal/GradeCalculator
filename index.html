@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section div="home">
+        <div class="home-text">
+            <h1 class="title"><label>G</label>rade <label>C</label>alculator</h1>
+            <h1 class="description">turn on to start</h1>
+        </div>
+
+        <div class="calculator-container">
+            <div class="calculator">
+                <img class="calculator-img" src="assets/img/calculator.png">
+                <div class="calculator-button">
+                    <button type="button" id="start-button">
+                        <img src="assets/img/button.png">
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="grade-calculator">
+            <div class="grade-calculator-container">
+
+                <div class="method-selector">
+                    <label for="menu" class="method"></label>
+                    <select name="menu" class="method-selector">
+                        <optgroup>
+                            <option value="grades" selected>Grades</option>
+                            <option value="gwa">GWA Per Subject</option>
+                            <option value="overall-gwa">GWA</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div id="grades">
+                    <div class="option-container">
+                        <label for="activity" class="grade-options"></label>
+                        <select name="activity" class="grade-option-selector">
+                            <optgroup>
+                                <option value="activity" selected>Activity</option>
+                                <option value="ptask">Performance Task</option>
+                                <option value="exam">Exam</option>
+                            </optgroup>
+                        </select>
+
+                        <input type="number" class="score" name="score" placeholder="Score" min="0" max="100">
+                        <h1>/</h1>
+                        <input type="number" class="total" name="total" placeholder="Total" min="0" max="100">
+                        
+                        <button type="button" class="delete">
+                            <img src="assets/img/delete.svg">
+                        </button>
+                    </div>  
+
+                    <footer>
+                        <button type="button" class="add-button">
+                            Add
+                        </button>
+
+                        <div class="grade-output">
+                            <p>Grade: </p>
+                            <label id="output">0.00</label>
+                            <p>or</p>
+                            <label id="equivalent">5.00 (Failed)</label>
+                        </div>
+
+                        <div class="calculate-clear">
+                            <button type="button" class="calculate">
+                                Calculate
+                            </button>
+
+                            <button type="button" class="clear">
+                                Clear
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+
+                <div id="gwa">
+                        <div class="gwa-table">
+                            <div class="term-title">
+                                <h1>Prelims</h1>
+                                <h1>Midterms</h1>
+                                <h1>Prefinals</h1>
+                                <h1>Finals</h1>
+                            </div>
+
+                            <div class="subject-container">
+                                <input type="text" class="subject" name="subject" placeholder="Subject (Optional)">
+                                
+                                <input type="number" class="prelim" name="prelim" placeholder="0" min="0" max="100">
+                                <input type="number" class="midterm" name="midterm" placeholder="0" min="0" max="100">
+                                <input type="number" class="prefi" name="prefi" placeholder="0" min="0" max="100">
+                                <input type="number" class="finals" name="finals" placeholder="0" min="0" max="100">
+                                
+                                <button type="button" class="delete">
+                                    <img src="assets/img/delete.svg">
+                                </button>
+                            </div>
+                        </div>
+                    
+                    <footer>
+                        <button type="button" class="add-button">
+                            Add
+                        </button>
+
+                        <div class="grade-output">
+                            <p>Grade: </p>
+                            <label id="output">0.00</label>
+                            <p>or</p>
+                            <label id="equivalent">5.00 (Failed)</label>
+                        </div>
+
+                        <div class="calculate-clear">
+                            <button type="button" class="calculate">
+                                Calculate
+                            </button>
+
+                            <button type="button" class="clear">
+                                Clear
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+
+                <div id="overall">
+                    <div class="overall-subject-container">
+                        <input type="text" class="subject" name="subject" placeholder="Subject (Optional)">
+                        
+                        <input type="number" class="grade" name="grade" placeholder="0" min="0" max="100">
+                        
+                        <button type="button" class="delete">
+                            <img src="assets/img/delete.svg">
+                        </button>
+                    </div>
+                    
+                    <footer>
+                        <button type="button" class="add-button">
+                            Add
+                        </button>
+
+                        <div class="grade-output">
+                            <p>Grade: </p>
+                            <label id="output">0.00</label>
+                            <p>or</p>
+                            <label id="equivalent">5.00 (Failed)</label>
+                        </div>
+
+                        <div class="calculate-clear">
+                            <button type="button" class="calculate">
+                                Calculate
+                            </button>
+
+                            <button type="button" class="clear">
+                                Clear
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+        </div>
+
+        <footer class="footer-text">
+            <p>Made by Jaeda</p>
+        </footer>
+    </section>
+
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
