@@ -4,19 +4,19 @@ import { animate, createDraggable, spring, splitText, stagger, utils, createAnim
 
 // Start Page Animations
 
-// animate('.home-text', {
-//     translateY: { from: '5vw', to: '0' },
-//     duration: 1000,
-//     opacity: [0, 1],
-//     delay: 800,
-// });
+animate('.home-text', {
+    translateY: { from: '5vw', to: '0' },
+    duration: 1000,
+    opacity: [0, 1],
+    delay: 800,
+});
 
-// animate('.calculator', {
-//     translateY: { from: '5vw', to: '0' },
-//     duration: 900,
-//     delay: 2000,
-//     opacity: [0, 1],
-// });
+animate('.calculator', {
+    translateY: { from: '5vw', to: '0' },
+    duration: 900,
+    delay: 2000,
+    opacity: [0, 1],
+});
 
 /* Calculator */
 
