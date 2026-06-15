@@ -33,29 +33,26 @@ body {
 
   .title {
     font-size: 5vw;
-    margin-top: 30vw;
+    margin-top: 200px;
   }
 
   .description {
     font-size: 5vw;
     width: 15em;
+    transition: 0.5s ease-out;
   }
 
   .calculator {
     scale: 130%;
   }
 
-  .calculator-button {
-    margin-left: 43.5vw;
-    margin-top: -18vw;
-  }
-
-  .calculator-button img {
-    width: 9.8vw;
+  #start-button {
+    margin-top: 0.25%;
+    margin-left: 0.1%;
   }
 
   .grade-calculator {
-    margin-top: -15em;
+    margin-top: -10em;
     width: 100%;
   }
 
@@ -66,12 +63,6 @@ body {
 
   select::picker-icon {
     scale: 80%;
-  }
-
-  #grades {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
   }
 
   .option-container {
@@ -123,6 +114,22 @@ body {
   .subject-container input {
     padding-left: 0.7em;
   }
+
+  .head h1 {
+    font-size: 5vw;
+  }
+
+  #grade-table {
+    width: 90%;
+  }
+
+  #grade-table th {
+    font-size: 4vw;
+  }
+
+  #grade-table td {
+    font-size: 2em;
+  }
 }
 
 /* ------------------------------
@@ -132,6 +139,7 @@ body {
 @media only screen and (min-width: 850px) {
   .title {
     font-size: 4em;
+    margin-top: 100px;
   }
 
   .description {
@@ -140,25 +148,17 @@ body {
   }
 
   .calculator {
-    margin-top: -20em;
-  }
-
-  .calculator-button {
-    margin-left: 23.85em;
-    margin-top: -9.9em;
-  }
-
-  .calculator-button img {
-    width: 5.2em;
+    margin-top: -15em;
+    scale: 120%;
   }
 
   .grade-calculator {
     width: 100%;
-    margin-top: -23%;
+    margin-top: -20%;
   }
 
   .grade-calculator-container {
-    width: 50%;
+    width: 70%;
     padding: 1em;
   }
 
@@ -215,11 +215,39 @@ body {
   .subject-container input {
     padding-left: 1em;
   }
+
+  .head h1 {
+    font-size: 1.5vw;
+  }
+
+  #grade-table {
+    width: 40%;
+    /* margin-top: -17.3%; */
+    scale: 90%;
+  }
+
+  #grade-table th {
+    font-size: 1vw;
+  }
+
+  #grade-table td {
+    font-size: 1.4em;
+  }
 }
 
 /* ------------------------------
               HOME
 ------------------------------ */
+
+.home-text {
+  width: 100%;
+  text-align: center;
+  height: 50em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .title {
   text-align: center;
@@ -247,52 +275,105 @@ body {
 }
 
 .calculator {
-  overflow: hidden;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
   position: relative;
-  display: flex;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .calculator-img {
-  overflow: hidden;
-  width: 50em;
   display: block;
+  width: 100%;
 }
 
-.home-text {
+#start-button {
+  position: absolute;
+  top: 37.3%;
+  left: 63.7%;
+  width: 20%;
+  background: none;
+  border: none;
+  scale: 58%;
+}
+
+#start-button img {
   width: 100%;
-  text-align: center;
-  height: 50em;
+}
+
+#start-button img {
+  transition: 0.2s ease-out;
+}
+
+#start-button img:hover {
+  scale: 105%;
+  filter: drop-shadow(0px 0px 15px #e7d8b9) brightness(1.2);
+  cursor: pointer;
+}
+
+/* ------------------------------
+          GRADE TABLE
+------------------------------ */
+
+.head h1 {
+  font-family: "Gyahegi", cursive;
+  color:#999B84
+}
+
+.head h2 {
+  margin-top: 1em;
+  font-family: "Instrument Serif", serif;
+}
+
+.table-wrapper {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 1em;     
+  padding: 3em 2em 3em 3em;
+  filter: drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.25));
+  color: #4F4F4F;
+  font-family: "Instrument Serif", serif;
+  max-width: 800px;
+  width: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #999B84 transparent;
+}
+
+#grade-table {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
+  box-sizing: border-box;
+  padding: 1.5em;
+  margin-top: -200px;
 }
 
-.calculator-button {
-  overflow: hidden;
+#grade-table table {
   text-align: center;
-  justify-content: center;
-  position: absolute;
+  border-collapse: separate;
+  border-spacing: 0.5em;
 }
 
-.calculator-button button {
-  border: none;
-  background: none;
-  padding: 0;
+#grade-table th {
+  font-family: "Instrument Serif", serif;
+  padding: 0.5em;
 }
 
-.calculator-button img {
-  transition: 0.2s ease-out;
-}
-
-.calculator-button img:hover {
-  scale: 105%;
-  filter: drop-shadow(0px 0px 15px #e7d8b9) brightness(1.2);
-  cursor: pointer;
+#grade-table td {
+  padding: 1em;
+  border-radius: 2em;
+  margin-top: 10em;
 }
 
 /* ------------------------------
@@ -407,6 +488,7 @@ select:open::picker-icon {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1em;
 }
 
 select {
@@ -537,7 +619,6 @@ select {
 .overall-subject-container input{
   width: 30%;
   box-sizing: border-box;
-  min-width: 0; 
   height: 2.5em;
   text-align: left;
   padding-left: 1em;  

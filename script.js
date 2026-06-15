@@ -4,19 +4,19 @@ import { animate, createDraggable, spring, splitText, stagger, utils, createAnim
 
 // Start Page Animations
 
-animate('.home-text', {
-    translateY: { from: '5vw', to: '0' },
-    duration: 1000,
-    opacity: [0, 1],
-    delay: 800,
-});
+// animate('.home-text', {
+//     translateY: { from: '5vw', to: '0' },
+//     duration: 1000,
+//     opacity: [0, 1],
+//     delay: 800,
+// });
 
-animate('.calculator', {
-    translateY: { from: '5vw', to: '0' },
-    duration: 900,
-    delay: 2000,
-    opacity: [0, 1],
-});
+// animate('.calculator', {
+//     translateY: { from: '5vw', to: '0' },
+//     duration: 900,
+//     delay: 2000,
+//     opacity: [0, 1],
+// });
 
 /* Calculator */
 
@@ -28,13 +28,26 @@ $(document).ready(function(){
     $("#overall #equivalent").addClass("failed");
     $("#gwa").hide();
     $("#overall").hide();
+    $("#grade-table").hide();
 
     $("#start-button").click(function() {
         $(".calculator").hide().removeClass(".calculator");
-        $(".description").hide().removeClass(".description");
         $(".grade-calculator").show();
 
-        animate('.title', {
+        $(".description").text("click to see grade table").css(
+            "cursor", "pointer"
+        );
+
+        $(".description").hover(function(){
+            $(this).css("transition", "0.2s ease-out");
+            $(this).css("color", "white");
+            $(this).css("background-color", "#999B84");
+        }, function(){
+            $(this).css("background-color", "white");
+            $(this).css("color", "#4F4F4F"); 
+        });
+
+        animate('.home-text', {
             translateY: { from: '0', to: '-10vw' },
             duration: 1000,
         });
@@ -51,6 +64,27 @@ $(document).ready(function(){
             "overflowY", "auto",
         );
 
+        $(".description").click(function() {
+            $("#grade-table").toggle();
+
+            animate('#grade-table', {
+                translateY: { from: '2vw', to: '0' },
+                opacity: [0, 1],
+                duration: 300,
+            });
+        });
+        
+        $("#grade-table").css(
+            "cursor", "pointer"
+        ).click(function() {
+            animate('#grade-table', {
+                translateY: { from: '0', to: '2vw' },
+                opacity: [1, 0],
+                duration: 300,
+            }).then(()=> {
+                $("#grade-table").hide();
+            });
+        });
     });
 
     $(".delete img").mouseenter(function() {

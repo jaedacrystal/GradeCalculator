@@ -21,18 +21,16 @@
         <div class="calculator-container">
             <div class="calculator">
                 <img class="calculator-img" src="assets/img/calculator.png">
-                <div class="calculator-button">
+                <!-- <div class="calculator-button"> -->
                     <button type="button" id="start-button">
                         <img src="assets/img/button.png">
                     </button>
-                    
-                </div>
+                <!-- </div> -->
             </div>
         </div>
 
         <div class="grade-calculator">
             <div class="grade-calculator-container">
-
                 <div class="method-selector">
                     <label for="menu" class="method"></label>
                     <select name="menu" class="method-selector">
@@ -171,11 +169,67 @@
                 </div>
         </div>
 
+        <div id="grade-table">
+            <div class="table-wrapper">
+                <div class="head">
+                    <h1>Grading System</h1>
+                    <h2>STI 2025 - 2026</h2>
+                </div>
+                
+                <table>
+                    <tr>
+                        <th>Grade Range</th>
+                        <th>GWA and Remarks</th>
+                    </tr>
+                    <tr>
+                        <td>97.50 - 100</td>
+                        <td class="excellent">1.00 (Excellent)</td>
+                    </tr>
+                    <tr>
+                        <td>94.50 - 97.49</td>
+                        <td class="very-good">1.25 (Very Good)</td>
+                    </tr>
+                    <tr>
+                        <td>91.50 - 94.49</td>
+                        <td class="very-good">1.25 (Very Good)</td>
+                    </tr>
+                    <tr>
+                        <td>86.50 - 91.49</td>
+                        <td class="very-good">1.25 (Very Good)</td>
+                    </tr>
+                    <tr>
+                        <td>81.50 - 86.49</td>
+                        <td class="satisfactory">1.25 (Satisfactory)</td>
+                    </tr>
+                    <tr>
+                        <td>76.00 - 81.49</td>
+                        <td class="satisfactory">1.25 (Satisfactory)</td>
+                    </tr>
+                    <tr>
+                        <td>70.50 - 75.99</td>
+                        <td class="satisfactory">1.25 (Satisfactory)</td>
+                    </tr>
+                    <tr>
+                        <td>65.00 - 70.49</td>
+                        <td class="fair">1.25 (Fair)</td>
+                    </tr>
+                    <tr>
+                        <td>59.50 - 64.99</td>
+                        <td class="fair">1.25 (Fair)</td>
+                    </tr>
+                    <tr>
+                        <td>0.00 - 59.49</td>
+                        <td class="failed">1.25 (Failed)</td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+
         <footer class="footer-text">
             <p>Made by Jaeda</p>
         </footer>
     </section>
-
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="module" src="script.js"></script>
