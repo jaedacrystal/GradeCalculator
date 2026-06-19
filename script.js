@@ -309,11 +309,33 @@ $(document).ready(function(){
             convertedGrade = 3.00;
             remark = "Fair";
             theme = "fair";
-        } else if (grade <= 59.49) {
-            convertedGrade = 5.00;
+        } else if (grade >= 5.01 && grade <= 59.49) {
+            convertedGrade = grade;
             remark = "Failed";
             theme = "failed";
-        } else {
+        } else if (grade >= 4.01 && grade <= 5.00) {
+            convertedGrade = grade;
+            remark = "Failed";
+            theme = "failed";
+        } else if (grade >=  3.01 && grade <= 4.00) {
+            convertedGrade = grade;
+            remark = "Fair";
+            theme = "fair";
+        } else if (grade >=  2.01 && grade <= 3.00) {
+            convertedGrade = grade;
+            remark = "Satisfactory";
+            theme = "satisfactory";
+        } else if (grade >=  1.5 && grade <= 2.00) {
+            convertedGrade = grade;
+            remark = "Very Good";
+            theme = "very-good";
+        } else if (grade >=  1 && grade <= 1.49) {
+            convertedGrade = grade;
+            remark = "Excellent";
+            theme = "excellent";
+        }
+        
+        else {
             console.error("An error occurred in grade conversion.");
             return { convertedGrade: "N/A", remark: "Error" };
         }
