@@ -310,7 +310,7 @@ $(document).ready(function(){
             remark = "Fair";
             theme = "fair";
         } else if (grade >= 5.01 && grade <= 59.49) {
-            convertedGrade = grade;
+            convertedGrade = 5.00;
             remark = "Failed";
             theme = "failed";
         } else if (grade >= 4.01 && grade <= 5.00) {
