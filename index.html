@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home</title>
+    <title>Grade Calculator by Jaeda</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -13,6 +13,8 @@
 
 <body>
     <section div="home">
+        <div id="loader"></div>
+
         <div class="home-text">
             <h1 class="title"><label>G</label>rade <label>C</label>alculator</h1>
             <h1 class="description">turn on to start</h1>
@@ -38,6 +40,7 @@
                             <option value="grades" selected>Grades</option>
                             <option value="gwa">GWA Per Subject</option>
                             <option value="overall-gwa">GWA</option>
+                            <option value="cumulative">Cumulative GWA</option>
                         </optgroup>
                     </select>
                 </div>
@@ -167,7 +170,42 @@
                         </div>
                     </footer>
                 </div>
-        </div>
+                    
+                <div id="cumulative-gwa">
+                    <div class="cumulative-container">
+                        <input type="text" class="term" name="term" placeholder="1st Term">
+                        
+                        <input type="number" class="grade" name="grade" placeholder="0" min="0" max="100">
+                        
+                        <button type="button" class="delete">
+                            <img src="assets/img/delete.svg">
+                        </button>
+                    </div>
+                    
+                    <footer>
+                        <button type="button" class="add-button">
+                            Add
+                        </button>
+
+                        <div class="grade-output">
+                            <p>Grade: </p>
+                            <label id="output">0.00</label>
+                            <p>or</p>
+                            <label id="equivalent">5.00 (Failed)</label>
+                        </div>
+
+                        <div class="calculate-clear">
+                            <button type="button" class="calculate">
+                                Calculate
+                            </button>
+
+                            <button type="button" class="clear">
+                                Clear
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
 
         <div id="grade-table">
             <div class="table-wrapper">

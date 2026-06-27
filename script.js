@@ -8,14 +8,18 @@ animate('.home-text', {
     translateY: { from: '5vw', to: '0' },
     duration: 1000,
     opacity: [0, 1],
-    delay: 800,
+    delay: 2800,
 });
 
 animate('.calculator', {
     translateY: { from: '5vw', to: '0' },
     duration: 900,
-    delay: 2000,
+    delay: 4000,
     opacity: [0, 1],
+});
+
+$(window).on("load", function() {
+    $("#loader").delay(2000).fadeOut("slow");
 });
 
 /* Calculator */
@@ -23,12 +27,15 @@ animate('.calculator', {
 $(document).ready(function(){
     $(".grade-calculator").hide();
     $(".footer-text").hide();
-    $("#grades #equivalent").addClass("failed");
-    $("#gwa #equivalent").addClass("failed");
-    $("#overall #equivalent").addClass("failed");
     $("#gwa").hide();
     $("#overall").hide();
     $("#grade-table").hide();
+    $("#cumulative-gwa").hide();
+
+    $("#grades #equivalent").addClass("failed");
+    $("#gwa #equivalent").addClass("failed");
+    $("#overall #equivalent").addClass("failed");
+    $("#cumulative-gwa #equivalent").addClass("failed");
 
     $("#start-button").click(function() {
         $(".calculator").hide().removeClass(".calculator");
@@ -102,6 +109,9 @@ $(document).ready(function(){
 
         var overallRow = $(this).closest(".overall-subject-container");
         var overallRowElement = overallRow[0];
+
+        var cumulativeRow = $(this).closest(".cumulative-container");
+        var cumulativeRowElement = cumulativeRow[0];
         
         if ($("#grades").is(':visible')) {
             if ($(".option-container").length > 1) {
@@ -171,7 +181,7 @@ $(document).ready(function(){
                     $("#overall .calculate").click();
                 });
             } else {
-                $(".grade").val("");
+                $("#overall .grade").val("");
                 $("#overall .clear").click();
                 animate("#overall #output, #overall #equivalent", {
                     transform: ["scale(0.9)", "scale(1)"],
@@ -180,7 +190,52 @@ $(document).ready(function(){
                 });
             }
         }
+
+        if ($("#cumulative-gwa").is(':visible')) {
+            if ($(".cumulative-container").length > 1) {
+                animate(cumulativeRowElement, {
+                    opacity: [1, 0],
+                    translateY: { from: '0', to: '-2vw' },
+                    height: 0,
+                    marginBottom: 0,
+                    paddingTop: 0,
+                    paddingBottom: 0,
+                    duration: 300,
+                    easing: "ease-out"
+                }).then(() => {
+                    cumulativeRow.remove();
+                    reindexCumulativeTerms();
+
+                    $("#cumulative-gwa .calculate").click();
+                });
+            } else {
+                $("#cumulative-gwa .grade").val("");
+                $("#cumulative-gwa .clear").click();
+                animate("#cumulative-gwa #output, #cumulative-gwa #equivalent", {
+                    transform: ["scale(0.9)", "scale(1)"],
+                    opacity: [0, 1],
+                    duration: 400
+                });
+            }
+        }
     });
+
+    function reindexCumulativeTerms() {
+        $("#cumulative-gwa .cumulative-container").each(function(index) {
+            var termNumber = index + 1; 
+            
+            var suffix = "th";
+            if (termNumber % 10 === 1 && termNumber % 100 !== 11) {
+                suffix = "st";
+            } else if (termNumber % 10 === 2 && termNumber % 100 !== 12) {
+                suffix = "nd";
+            } else if (termNumber % 10 === 3 && termNumber % 100 !== 13) {
+                suffix = "rd";
+            }
+            
+            $(this).find(".term").val(termNumber + suffix + " Term");
+        });
+    }
 
     $("#grades .add-button").click(function() {
         var clonedDiv = $(".option-container:first").clone(true).insertAfter('.option-container:last');
@@ -218,6 +273,31 @@ $(document).ready(function(){
         });
     });
 
+    $("#cumulative-gwa .add-button").click(function() {
+        var clonedDiv = $(".cumulative-container:first").clone(true).insertAfter('.cumulative-container:last');
+        clonedDiv.find(".grade").val("");
+        var termNumber = $(".cumulative-container").length;
+
+        reindexCumulativeTerms();
+
+        var suffix = "th";
+        if (termNumber % 10 === 1 && termNumber % 100 !== 11) {
+            suffix = "st";
+        } else if (termNumber % 10 === 2 && termNumber % 100 !== 12) {
+            suffix = "nd";
+        } else if (termNumber % 10 === 3 && termNumber % 100 !== 13) {
+            suffix = "rd";
+        }
+
+        clonedDiv.find(".term").val(termNumber + suffix + " Term");
+
+        animate(clonedDiv[0], {
+            translateY: { from: '2vw', to: '0' },
+            opacity: [0, 1],
+            duration: 500,
+        });
+    });
+
     // Method Chooser
 
     $(".method-selector").change(function() {
@@ -234,6 +314,7 @@ $(document).ready(function(){
 
                 $("#gwa").hide();
                 $("#overall").hide();
+                $("#cumulative-gwa").hide();
                 break;
             
             case "gwa":
@@ -245,6 +326,7 @@ $(document).ready(function(){
                 
                 $("#grades").hide();
                 $("#overall").hide();
+                $("#cumulative-gwa").hide();
                 break;
 
             case "overall-gwa":
@@ -254,6 +336,19 @@ $(document).ready(function(){
                     duration: 500,
                 });
 
+                $("#cumulative-gwa").hide();
+                $("#grades").hide();
+                $("#gwa").hide();
+                break;
+
+            case "cumulative":
+                $("#cumulative-gwa").show();
+                animate('#cumulative-gwa', {
+                    opacity: [0, 1],
+                    duration: 500,
+                });
+
+                $("#overall").hide();
                 $("#grades").hide();
                 $("#gwa").hide();
                 break;
@@ -674,6 +769,111 @@ $(document).ready(function(){
                 
                 setTimeout(function() {
                     $(".overall-subject-container:last").find(".grade").focus();
+                }, 30); 
+            }
+        }
+    });
+
+    // Cumulative GWA Calculator Logic
+
+    $("#cumulative-gwa .calculate").on("click", function() {
+        let isValidationError = false;
+        let totalWeightedGradesSum = 0;
+        let totalValidSubjectsCount = 0;
+
+        $("#cumulative-gwa .cumulative-container").each(function() {
+            let grade = parseFloat($(this).find(".grade").val());
+
+            if (isNaN(grade)) {
+                return true;
+            }
+
+            if (grade < 0 || grade > 100) {
+                isValidationError = true;
+                return false;
+            }
+
+                totalWeightedGradesSum += grade;
+                totalValidSubjectsCount++;
+            }
+        );
+
+        if (isValidationError) {
+            $("#cumulative-gwa #output").text("N/A");
+            $("#cumulative-gwa #equivalent")
+                .text("Error")
+                .removeClass("excellent very-good satisfactory fair failed")
+                .addClass("failed");
+
+            animate("#cumulative-gwa #output, #cumulative-gwa #equivalent", {
+                transform: ["scale(0.9)", "scale(1)"],
+                opacity: [0, 1],
+                duration: 300                                 
+            });
+            return;
+        }
+
+        if (totalValidSubjectsCount > 0) {
+            let finalGWA = totalWeightedGradesSum / totalValidSubjectsCount;
+            
+            let specificGWA = (Math.floor(finalGWA * 100) / 100).toFixed(2);
+            let result = convertGrade(parseFloat(specificGWA));
+            $("#cumulative-gwa #output").text(specificGWA);
+
+            $("#cumulative-gwa #equivalent")
+                .text(`${result.convertedGrade} (${result.remark})`)
+                .removeClass("excellent very-good satisfactory fair failed")
+                .addClass(result.theme);
+
+            animate("#cumulative-gwa #output, #cumulative-gwa #equivalent", {
+                transform: ["scale(0.9)", "scale(1)"],
+                opacity: [0, 1],
+                duration: 300                                 
+            });
+        } else {
+            $("#cumulative-gwa #output").text("0.00");
+            $("#cumulative-gwa #equivalent")
+                .text("5.00 (Failed)")
+                .removeClass("excellent very-good satisfactory fair failed")
+                .addClass("failed");
+
+            animate("#cumulative-gwa #output, #cumulative-gwa #equivalent", {
+                transform: ["scale(0.9)", "scale(1)"],
+                opacity: [0, 1],
+                duration: 400
+            });
+        }
+    });
+
+    $("#cumulative-gwa .clear").on("click", function() {
+        $(".grade").val("");
+        $("#cumulative-gwa #output").text("0.00");
+        $("#cumulative-gwa #equivalent").text("5.00 (Failed)").removeClass("excellent very-good satisfactory fair failed").addClass("failed");
+        
+        animate("#cumulative-gwa #output, #cumulative-gwa #equivalent", {
+            transform: ["scale(0.9)", "scale(1)"],
+            opacity: [0, 1],
+            duration: 400
+        });
+    });
+
+    $("#cumulative-gwa").on("keydown", ".grade", function(event) {
+        
+        if (event.key === "Enter") {
+            event.preventDefault();
+
+            var allInputs = $("#cumulative-gwa").find(".grade");
+            
+            var currentIndex = allInputs.index(this);
+            var nextIndex = currentIndex + 1;
+
+            if (nextIndex < allInputs.length) {
+                allInputs.eq(nextIndex).focus();
+            } else {
+                $("#cumulative-gwa .add-button").click();
+                
+                setTimeout(function() {
+                    $(".cumulative-container:last").find(".grade").focus();
                 }, 30); 
             }
         }
